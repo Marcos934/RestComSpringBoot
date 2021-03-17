@@ -1,5 +1,8 @@
 package br.com.erudio.converter;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class NumberConverter {
     public static Double convertToDouble(String strNumber){
         if(strNumber == null){

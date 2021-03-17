@@ -1,20 +1,25 @@
-package br.com.erudio;
+package br.com.erudio.controller;
 
 import br.com.erudio.converter.NumberConverter;
 import br.com.erudio.exception.UnsuportedMathOperationException;
 import br.com.erudio.math.SimpleMath;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
+
 
 @RestController
 public class MathController{
     private static final String template = "Hello, %s!";
 
+    @Autowired
+    private SimpleMath SimpleMath;
+
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(value="/sum/{numberOne}/{numberTwo}", method = RequestMethod.GET)
-    public Double sum(
+    public  Double sum(
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
